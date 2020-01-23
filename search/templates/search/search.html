@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        {% if query %}
+        <div class="col-md-6 offset-md-3">
+            <div class="card text-center">
+                <div class="card-header">
+                    <span>
+                        <i class="fas fa-search"></i>
+                    </span> 
+                    Searched For: <strong class="text-info">{{query}}</strong> </div>
+            </div>
+        </div>
+        <hr>
+
+        {% else %}
+        <div class="col-md-6 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                   {% include 'partial/_search.html' %}
+                </div>
+                <div class="card-footer">
+                    <h3>!!Did you type your search already?</h3>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+
+
+        <div class="row mb-3">
+        {% for object in object_list %}
+        <div class="col-md-4 mt-3">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>{{object.title}}</h1>
+                </div>
+                <div class="card-body">
+                    {% if object.image %}
+                    <img class="card-img-bottom" src="{{object.image.url}}" alt="img">
+                    {% endif %}
+                    <h4 class="card-text mt-2">Price:{{object.price}}$</h4>
+                </div>
+                <div class="card-footer">
+                    <a href="{{object.get_absolute_url}}" class="btn btn-outline-info">More Info</a>
+                </div>
+             </div>
+        </div>
+        {% endfor %}
+
+
+
+    </div>
+</div>
+
+{% endblock %}

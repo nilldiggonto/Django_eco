@@ -1,0 +1,12 @@
+{% url 'carts:cart' as cart_url %}
+<form  data-endpoint="{% url 'carts:cart-update' %}" class='form-product-ajax d-inline {{show}}' action="{% url 'carts:cart-update' %}" method="POST" class="d-inline">
+    {% csrf_token %}
+    <input class="cart-product-id" type="hidden" name="product_id" value="{{ product_id}}">
+
+   
+    <button   type="submit" class="btn btn-outline-light btn-sm" style="color:red;"><span><i class="fas fa-minus-circle"></i></span></button>
+
+
+</form>
+
+

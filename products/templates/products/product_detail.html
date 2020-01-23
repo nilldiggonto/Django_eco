@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+
+        
+        <div class="col-md-6 offset-md-3 mt-3">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>{{object.title}}</h1>
+
+                    {% include 'products/update_cart.html' with product=object  cart=cart %}
+                    <!-- {{ cart }} -->
+                    
+
+
+                   
+                </div>
+                <div class="card-body">
+                    {% if object.image %}
+                    <img class="card-img-bottom" src="{{object.image.url}}" alt="img">
+                    {% endif %}
+                    <p>{{object.description}}</p>
+                    
+                </div>
+                <div class="card-footer">
+                        <h4>Price:{{object.price}}$</h4>
+                </div>
+             </div>
+        </div>
+       
+
+
+
+    </div>
+</div>
+
+{% endblock %}
